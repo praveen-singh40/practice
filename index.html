@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+        .settings-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .settings-button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .settings-button:hover {
+            transform: rotate(45deg);
+        }
+
+        .settings-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+        }
+
+        .settings-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .settings-content a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(45deg, #6c63ff, #ff6584);
+            color: white;
+            padding: 20px;
+        }
+
+        .content {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #333;
+            color: white;
+            cursor: pointer;
+        }
+
+        .dark-theme {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        .dark-theme .card {
+            background: #333;
+            color: white;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: #6c63ff;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .social-links a:hover {
+            color: #6c63ff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="settings-dropdown">
+            <button class="settings-button" onclick="toggleSettings()">⚙️</button>
+            <div class="settings-content" id="settingsDropdown">
+                <a href="#" onclick="toggleTheme()">Change Theme</a>
+                <a href="#" onclick="toggleLanguage()">Language</a>
+                <a href="#" onclick="toggleNotifications()">Notifications</a>
+                <a href="#" onclick="openProfile()">Profile</a>
+                <a href="#" onclick="openAccount()">Account Settings</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div>
+            <h1>Welcome to My Website</h1>
+            <p>A modern and responsive website  made by praveen , created with HTML, CSS, and JavaScript</p>
+        </div>
+    </section>
+
+    <div class="content" id="about">
+        <div class="card">
+            <h2>About Us</h2>
+            <p>This is a sample website showcasing various features and modern design principles.</p>
+        </div>
+
+        <div class="card">
+            <h2>Our Services</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum nesciunt at reprehenderit facilis dolore consequatur, itaque dignissimos corporis harum! Amet iure possimus fuga placeat animi dolorum ducimus, laborum accusantium sint.</p>
+        </div>
+    </div>
+
+    <div class="content" id="contact">
+        <div class="card">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us for any inquiries or collaborations.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Company</h3>
+                <p>Founded in 2020, we're dedicated to creating innovative web solutions for businesses worldwide.</p>
+                <p>Company Registration: #12345678</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: praveensingh242526@gmail.com</p>
+                <p>Phone: +91 9650211418</p>
+                <p>Address: p 119/4 , DC 1 , air force statioon avadi , chennai 600055</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    
+                  
+                    <a href="#">Instagram: @praveen_s4</a>
+                    <a href="#">Github:https://github.com/praveen-singh40</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 . All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+        }
+
+        function toggleSettings() {
+            document.getElementById("settingsDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.settings-button')) {
+                var dropdowns = document.getElementsByClassName("settings-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        // Placeholder functions for settings actions
+        function toggleLanguage() {
+            alert("Language settings clicked!");
+        }
+
+        function toggleNotifications() {
+            alert("Notification settings clicked!");
+        }
+
+        function openProfile() {
+            alert("Profile settings clicked!");
+        }
+
+        function openAccount() {
+            alert("Account settings clicked!");
+        }
+
+        // Add animation to cards when they come into view
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        cards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
